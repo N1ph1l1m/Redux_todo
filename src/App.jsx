@@ -1,6 +1,7 @@
 import './App.css';
 import {useState} from 'react';
-
+import TodoList from './components/TodoList';
+import InputField from './components/inputField';
 function App() {
 
 
@@ -36,22 +37,17 @@ function App() {
         }
       ])
       setText('');
+     
     }
+    console.log(todos.id);
   }
   return (
     <div className="App">
-    <label>
-      <input value={text} onChange={(e)=>setText(e.target.value)}/>
-      <button onClick={addTodo}>Add todo</button>
-    </label>
-    <ul>
-      {todos.map(todo => <li key ={todo.id}>
-        <input type = "checkbox" checked = {todo.completed} onChange={() => toggleTodoComplete(todo.id)} />
-        <span>{todo.text}</span>
-        <span className='delete' onClick={() => removeTodo(todo.id)}>&times;</span>
-      </li>)
-      }
-    </ul>
+    <InputField text={text} handleInput={setText} handleSubmit={addTodo}/>
+    <TodoList todos={todos}
+      removeTodo = {removeTodo}
+      toggleTodoComplete = {toggleTodoComplete}
+   />
     </div>
   );
 }
