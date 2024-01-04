@@ -3,8 +3,8 @@ import {useState} from 'react';
 import { useDispatch } from 'react-redux';
 import { addTodo } from './store/todoSlice';
 
-import TodoList from './components/TodoList';
-import InputField from './components/inputField';
+import TodoList from './components/todo/TodoList';
+import InputField from './components/todo/inputField';
 function App() {
 
   const [text,setText] = useState('');
